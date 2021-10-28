@@ -10,7 +10,8 @@ Install dependeces of composer:
 
 ```bash
 composer install
-```as
+```
+
 
 ## Configuration server
 
