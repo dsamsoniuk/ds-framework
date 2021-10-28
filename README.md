@@ -1,10 +1,6 @@
 # Micro framework CV
 
 
-TODO:
-* routing do zrobienia + przekierowania wszystkie htaccess
-
-
 ## Install components
 
 Install dependeces of composer:
@@ -87,5 +83,6 @@ $affectedRows = $deleteStatement->execute();
 
 ```
 
-
-
+TODO:
+* routing do zrobienia + przekierowania wszystkie htaccess
+* nie działa paczka database 

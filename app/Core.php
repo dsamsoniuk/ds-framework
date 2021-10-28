@@ -12,7 +12,8 @@ if ($controller && $method) {
     $c = new $controller();
     $c->setGlobalData();
     $c->setUrlData($urlData);
-    echo $c->{$method}();
+    $html = $c->{$method}();
+    echo $html;
 } else {
     echo '<h1> Error 404 - Page not found</h1>';
 }

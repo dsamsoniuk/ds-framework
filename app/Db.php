@@ -10,7 +10,8 @@ class Db {
         $dsn = 'mysql:host=localhost;dbname=jan;charset=utf8';
         $usr = 'damian';
         $pwd = 'damian';
-        return new Database($dsn, $usr, $pwd);
+        $db = new Database($dsn, $usr, $pwd);
+        $a = 1232;
     }
 }
 

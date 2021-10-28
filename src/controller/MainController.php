@@ -18,7 +18,7 @@ class MainController extends Controller {
 
     public function index(){
         $rand = $this->service->getRandomNumber();
-        $res = $this->service->getSelect();
+        // $res = $this->service->getSelect();
         
         $postData = $this->post;
 
