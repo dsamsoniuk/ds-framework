@@ -4,6 +4,7 @@
 TODO:
 * routing do zrobienia + przekierowania wszystkie htaccess
 
+
 ## Install components
 
 Install dependeces of composer:
