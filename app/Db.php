@@ -11,7 +11,6 @@ class Db {
         $usr = 'damian';
         $pwd = 'damian';
         $db = new Database($dsn, $usr, $pwd);
-        $a = 1232;
     }
 }
 
