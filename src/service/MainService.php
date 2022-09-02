@@ -1,9 +1,10 @@
 <?php
 
-namespace Source\Service;
+namespace Src\Service;
 
-use App\Core\Service;
+use App\Service;
 use FaaPz\PDO\Clause\Conditional;
+use App\Db;
 
 class MainService extends Service {
     
@@ -12,10 +13,11 @@ class MainService extends Service {
     }
 
     public function getSelect(){
-        $db = $this->getDatabase();
-        $sel = $db->select()->from('account')
-        ->where(new Conditional("acct_num", ">", 1))
-        ->execute()->fetchAll();
-        return $sel;
+        $db = Db::getDatabase();
+        $query = [];
+        // $query = $db->select()->from('account')
+        // ->where(new Conditional("acct_num", ">", 1))
+        // ->execute()->fetchAll();
+        return $query;
     }
 }

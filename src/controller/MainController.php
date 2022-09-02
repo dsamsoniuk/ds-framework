@@ -1,10 +1,11 @@
 <?php
 
-namespace Source\Controller;
+namespace Src\Controller;
 
-use App\Core\Controller;
+use App\Controller;
 use FaaPz\PDO\Clause\Conditional;
-use Source\Service\MainService;
+use Src\Service\MainService;
+use App\Validation;
 
 class MainController extends Controller {
 
@@ -20,6 +21,8 @@ class MainController extends Controller {
         $rand = $this->service->getRandomNumber();
         // $res = $this->service->getSelect();
         
+        $getData = $this->get;
+        $val = Validation::parseInt($this->get);
         $postData = $this->post;
 
         return $this->renderView('main.html.twig', [

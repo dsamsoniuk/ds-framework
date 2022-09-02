@@ -1,15 +1,19 @@
 <?php
 
-namespace App\Core;
+namespace App;
 
-use App\Core\Db;
+use App\Db;
+use App\Validation;
 
-class Controller extends Db {
+class Controller {
+
     public $get = [];
     public $post = [];
+
+    public $validate;
+
     public function __construct()
     {
-
     }
     /**
      * Undocumented function

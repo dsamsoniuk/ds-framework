@@ -12,9 +12,9 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\Core\\": "app",
-            "Source\\Controller\\": "src/controller",
-            "Source\\Service\\": "src/service"
+            "App\\": "app",
+            "Src\\Controller\\": "src/controller",
+            "Src\\Service\\": "src/service"
         }
     }
 }

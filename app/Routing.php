@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Core;
+namespace App;
 
-use Source\Controller\MainController;
+use Src\Controller\MainController;
 
 class Routing {
     /**
@@ -108,7 +108,7 @@ class Routing {
         $actual_link    = explode('?', $this->server['REQUEST_URI'])[0];
         foreach ($this->routing as $r) {
             // $currentRoute = explode('?', );
-            if (!$r['require']) { // Exception
+            if (!isset($r['require'])) { // Exception
                 $routes[] = '/'.str_replace('/', '\/', $r['route']).'$/';
                 continue;
             }

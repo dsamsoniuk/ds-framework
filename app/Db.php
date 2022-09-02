@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\Core;
+namespace App;
 
 use FaaPz\PDO\Database;
 
 class Db {
-    public function getDatabase(){
+    public static function getDatabase(){
         $dsn = 'mysql:host=localhost;dbname=jan;charset=utf8';
         $usr = 'damian';
         $pwd = 'damian';

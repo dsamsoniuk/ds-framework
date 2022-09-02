@@ -1,7 +1,5 @@
 <?php
 
-namespace App\Core;
+namespace App;
 
-use App\Core\Db;
-
-class Service extends Db {}
+class Service  {}
