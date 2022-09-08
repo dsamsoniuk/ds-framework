@@ -2,27 +2,25 @@
 
 namespace App;
 
-use App\Db;
-use App\Twig\Extension\AppExtension;
-use App\Validation;
+use App\Templates\TemplateFabric;
+use App\Templates\TwigTemplate;
 
 class Controller {
 
     /**
-     * Undocumented function
+     * render template
      *
      * @param string $templateName default path
      * @param array $params
      * @return void
      */
     public function renderView($templateName, $params = []){
-        $loader = new \Twig\Loader\FilesystemLoader('../src/views');
-        $twig   = new \Twig\Environment($loader);
+        return $this->renderTwigView($templateName, $params);
+    }
 
-        $twig->addExtension(new \App\Twig\Extension\AppExtension);
-        $twig->addExtension(new \App\Twig\Extension\SessionExtension);
-
-        return $twig->render($templateName, $params);
+    public function renderTwigView($templateName, $params = []){
+        $tpl = new TemplateFabric(new TwigTemplate());
+        return $tpl->render($templateName, $params);
     }
 
     public function redirect($url){
