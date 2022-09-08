@@ -4,10 +4,15 @@ namespace App;
 
 class Configuration {
 
-    CONST fileName = 'config.ini';
+    CONST FILE_NAME = 'config.ini';
 
-    public static function get($name = ''){
-        $data = parse_ini_file(__DIR__.'/../'.self::fileName);
+    /**
+     * @param string $name
+     * 
+     * @return string
+     */
+    public static function get($name = '') : string {
+        $data = parse_ini_file(__DIR__.'/../'.self::FILE_NAME);
         return isset($data[$name]) ? $data[$name] : '';
     }
 }

@@ -4,11 +4,21 @@ namespace App;
 
 class Parse {
 
-    public static function int($value){
+    /**
+     * @param mixed $value
+     * 
+     * @return int
+     */
+    public static function int($value) : int{
         return intval($value);
     }
 
-    public static function string($value){
+    /**
+     * @param mixed $value
+     * 
+     * @return string
+     */
+    public static function string($value) : string{
         $value = @strip_tags($value);
         $value = @stripslashes($value);
 

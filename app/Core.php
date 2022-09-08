@@ -11,9 +11,12 @@ error_reporting(E_ALL);
 
 class Core {
 
-    private $csrfExcludeUrl = ['/', '/login'];
+    private $csrfExcludeUrl = ['/'];
 
-    public function init(){
+    /**
+     * @return string
+     */
+    public function init() : string {
         $route          = new Routing();
         $route->findController();
         $currentRoute   = $route->getRouteByController();
@@ -28,18 +31,18 @@ class Core {
             $route->generateCsrfToken();
 
             $html   = $c->{$method}();
-            echo $html;
+            return $html;
         } else {
             throw new Exception('Error 404 - Page not found');
         }
-
+        return '';
     }
 }
 
 try {
     Session::start();
     $core = new Core();
-    $core->init();
+    echo $core->init();
 } catch (Exception $e) {
     echo $e->getMessage();
 }

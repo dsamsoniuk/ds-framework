@@ -6,7 +6,13 @@ use FaaPz\PDO\Clause\Conditional;
 
 class Authorization {
 
-    public function login($userLogin, $userPassword){
+    /**
+     * @param string $userLogin
+     * @param string $userPassword
+     * 
+     * @return bool
+     */
+    public function login(string $userLogin, string $userPassword) : bool {
 
         $login      = Parse::string($userLogin);
         $password   = Parse::string($userPassword);
@@ -19,36 +25,54 @@ class Authorization {
         }
         return false;
     }
-    public function isLoged(){
+    /**
+     * @return bool
+     */
+    public function isLoged() : bool {
         if (empty(Session::get('user'))) {
             return false;
         }
         return true;
     }
 
-    public function checkLogin($userLogin){
+    /**
+     * @param string $userLogin
+     * 
+     * @return array
+     */
+    public function checkLogin(string $userLogin) : array {
         $login  = Parse::string($userLogin);
         $db     = Db::getConnection();
         $res    = $db->select()
             ->from('user')
             ->where(new Conditional("username", "=", $login))
             ->execute()
-            ->fetch();
+            ->fetch() ?: [];
         
         return $res; // [] - not exists 
     }
 
-    public function register($userLogin, $userPassword){
-        $login      = Parse::string($userLogin);
-        $password   = $this->hashPassword(Parse::string($userPassword));
+    public function register(string $userLogin, string $userPassword){
 
-        // Db::
+        // TODO : register function
+
+        // $login      = Parse::string($userLogin);
+        // $password   = $this->hashPassword(Parse::string($userPassword));
+
     }
 
-    public function hashPassword($password){
+    /**
+     * @param string $password
+     * 
+     * @return string
+     */
+    public function hashPassword(string $password) : string {
         return password_hash($password, PASSWORD_DEFAULT);
     }
-    public function logout(){
+    /**
+     * @return void
+     */
+    public function logout() : void{
         Session::set('user', []);
     }
 }

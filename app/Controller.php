@@ -9,21 +9,32 @@ class Controller {
 
     protected $route;
 
-    public function addCurrentRoute(array $route = []){
-        $this->route = $route;
-    }
     /**
-     * render template
-     *
-     * @param string $templateName default path
-     * @param array $params
+     * @param array $route
+     * 
      * @return void
      */
-    public function renderView($templateName, $params = []){
+    public function addCurrentRoute(array $route = []) : void {
+        $this->route = $route;
+    }
+
+    /**
+     * @param mixed $templateName
+     * @param array $params
+     * 
+     * @return string
+     */
+    public function renderView($templateName, $params = []) : string{
         return $this->renderTwigView($templateName, $params);
     }
 
-    public function renderTwigView($templateName, $params = []){
+    /**
+     * @param mixed $templateName
+     * @param array $params
+     * 
+     * @return string
+     */
+    public function renderTwigView($templateName, $params = []) : string {
         $tpl = new TemplateFabric(new TwigTemplate());
         return $tpl->render($templateName, $params);
     }

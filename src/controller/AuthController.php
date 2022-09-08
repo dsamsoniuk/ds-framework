@@ -12,14 +12,6 @@ use App\Route;
 
 class AuthController extends Controller {
 
-    // /** @var MainService $service */
-    // private $service;
-
-    public function __construct()
-    {
-        // $this->service = new MainService();
-    }
-
     public function login(){
         
         $req        = new Request();

@@ -148,7 +148,7 @@ class Routing {
 
     public function checkCsrfTokenIsCorrect(){
         $req    = new Request();
-        $token  = $req->get->get('csrf_token') ?: $req->get->get('csrf_token') ?: '';
+        $token  = $req->post->get('csrf_token') ?: $req->get->get('csrf_token') ?: '';
         if ($token !== Session::get('csrf_token')){
             Session::addMessage("Incorrect token", 'danger');
             Route::redirect('/');
