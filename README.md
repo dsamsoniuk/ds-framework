@@ -1,19 +1,20 @@
 # Micro framework CV
 
+Features:
+* authorization system (hash password) bcrypt
+* class for requests and session
+* parses
+* twig
+* PDO
+* segregation controllers, services, views
+* routing list
+* csrf secure
 
 TODO:
 
-* podlaczyc PDO
-* stworzyc fake dane i wrzucic automatycznie do bazy z konsoli
-* stworzyc prostego uzytkownika i zabezpieczenie hasla
-* zabezpieczenie csrf
-* stworzyc tabelke article i jakies fake dane
-* stworzyc fabryke z twiga
-* stworzyc metody parsujace string i usuwajace niebezpieczne znaki
-* storzyc proste testy na service
 * zapis logow
 * api (jak kontroler) i jakis domyslny token
-
+* storzyc proste testy na service
 
 
 ## run tests
@@ -28,8 +29,6 @@ Install dependeces of composer:
 ```bash
 composer install
 ```
-
-
 ## Configuration server
 
 Examples how configurate server.
@@ -102,7 +101,3 @@ $deleteStatement = $pdo->delete()
 $affectedRows = $deleteStatement->execute();
 
 ```
-
-TODO:
-* routing do zrobienia + przekierowania wszystkie htaccess
-* nie działa paczka database 

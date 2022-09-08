@@ -10,8 +10,8 @@
     <div class="row">
 
         <div class="col-sm-12">
-            <form method="post">
-                @csrf
+            <form method="post">                
+                <input type="hidden" name="csrf_token" value="{{getSession('csrf_token')}}">
                 <label for="">Login</label>
                 <input type="text" name="login" id="login">
                 <label for="">Password</label>

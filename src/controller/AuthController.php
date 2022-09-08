@@ -8,6 +8,7 @@ use App\Parse;
 use App\Session;
 use Src\Service\MainService;
 use App\Request\Request;
+use App\Route;
 
 class AuthController extends Controller {
 
@@ -27,7 +28,7 @@ class AuthController extends Controller {
 
         $auth       = new Authorization();
         if ($auth->isLoged()) {
-            $this->redirect('/');
+            Route::redirect('/');
         }
 
         if ($login && $password) {
@@ -35,7 +36,7 @@ class AuthController extends Controller {
             if (!$result) {
                 Session::addMessage('Wrong login or password', 'danger');
             } else {
-                $this->redirect('/');
+                Route::redirect('/');
 
             }
         }
@@ -50,6 +51,6 @@ class AuthController extends Controller {
         $auth->logout();
         Session::addMessage('You have been logged out.');
 
-        $this->redirect('/');
+        Route::redirect('/');
     }
 }

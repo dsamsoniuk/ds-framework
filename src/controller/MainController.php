@@ -28,7 +28,8 @@ class MainController extends Controller {
             'user' => $user,
         ]);
     }
-    public static function getNumber(){
-        return 123;
+    public function articles(){
+
+        return $this->renderView('articles.html.twig', []);
     }
 }

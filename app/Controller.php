@@ -7,6 +7,11 @@ use App\Templates\Twig\TwigTemplate;
 
 class Controller {
 
+    protected $route;
+
+    public function addCurrentRoute(array $route = []){
+        $this->route = $route;
+    }
     /**
      * render template
      *
@@ -23,8 +28,4 @@ class Controller {
         return $tpl->render($templateName, $params);
     }
 
-    public function redirect($url){
-        header("Location: ".$url);
-        die();
-    }
 }

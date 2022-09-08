@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Request\Request;
+use Exception;
 use Src\Controller\AuthController;
 use Src\Controller\MainController;
 
@@ -44,13 +46,13 @@ class Routing {
             'method'    => 'index',
             'route'     => '/',
         ],[
-            'name'      => 'main.index2',
+            'name'      => 'main.articles',
             'class'     => MainController::class,
-            'method'    => 'index',
-            'route'     => '/test/{a}',
-            'require'   => [
-                'a' => '\d+'
-            ]
+            'method'    => 'articles',
+            'route'     => '/articles',
+            // 'require'   => [
+            //     'a' => '\d+'
+            // ]
         ],[
             'name'      => 'auth.login',
             'class'     => AuthController::class,
@@ -69,7 +71,8 @@ class Routing {
      */
     public function __construct()
     {
-        $this->server = $_SERVER;
+        $req            = new Request();
+        $this->server   = $req->server->getAll();
     }
     /**
      * getUrlData function
@@ -99,8 +102,8 @@ class Routing {
      *
      * @return class|boolen
      */
-    public function getController(){
-        return $this->controller !== false ? $this->routing[$this->controller]['class'] : false;
+    public function getRouteByController(){
+        return $this->controller !== false ? $this->routing[$this->controller] : false;
     }
     /**
      * Undocumented function
@@ -138,4 +141,18 @@ class Routing {
         }
     }
 
+    public function generateCsrfToken(){
+        $token = bin2hex(random_bytes(64));
+        Session::set('csrf_token', $token);
+    }
+
+    public function checkCsrfTokenIsCorrect(){
+        $req    = new Request();
+        $token  = $req->get->get('csrf_token') ?: $req->get->get('csrf_token') ?: '';
+        if ($token !== Session::get('csrf_token')){
+            Session::addMessage("Incorrect token", 'danger');
+            Route::redirect('/');
+        }
+    }
+    
 }

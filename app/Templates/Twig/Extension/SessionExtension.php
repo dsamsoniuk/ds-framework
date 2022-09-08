@@ -11,7 +11,7 @@ class SessionExtension extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new TwigFunction('session', [$this, 'getSession']),
+            new TwigFunction('getSession', [$this, 'getSession']),
             new TwigFunction('getSessionMessages', [$this, 'getSessionMessages']),
         ];
     }

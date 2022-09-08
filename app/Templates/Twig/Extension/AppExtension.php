@@ -2,6 +2,7 @@
 
 namespace App\Templates\Twig\Extension;
 
+use App\Route;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
@@ -10,12 +11,13 @@ class AppExtension extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new TwigFunction('area', [$this, 'calculateArea']),
+            new TwigFunction('routeUrl', [$this, 'getRouteUrl']),
         ];
     }
 
-    public function calculateArea(int $width, int $length): int
+    public function getRouteUrl(string $url): string
     {
-        return $width * $length;
+        $url = Route::getUrl($url);
+        return $url;
     }
 }

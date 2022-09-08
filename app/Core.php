@@ -4,20 +4,29 @@ namespace App;
 
 use Exception;
 
+// TODO: only for test code, need to be 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 class Core {
 
-    public function init(){
-        $route      = new Routing();
-        $route->findController();
-        $controller = $route->getController();
-        $method     = $route->getMethod();
+    private $csrfExcludeUrl = ['/', '/login'];
 
-        if ($controller && $method) {
-            $c      = new $controller();
+    public function init(){
+        $route          = new Routing();
+        $route->findController();
+        $currentRoute   = $route->getRouteByController();
+        $method         = $route->getMethod();
+
+        if ($currentRoute && $method) {
+            $c = new $currentRoute['class']();
+
+            if (!in_array($currentRoute['route'], $this->csrfExcludeUrl)) {
+                $route->checkCsrfTokenIsCorrect();
+            }
+            $route->generateCsrfToken();
+
             $html   = $c->{$method}();
             echo $html;
         } else {
