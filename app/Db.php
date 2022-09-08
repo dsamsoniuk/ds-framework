@@ -6,11 +6,16 @@ namespace App;
 use FaaPz\PDO\Database;
 
 class Db {
-    public static function getDatabase(){
-        $dsn = 'mysql:host=localhost;dbname=jan;charset=utf8';
-        $usr = 'damian';
-        $pwd = 'damian';
-        $db = new Database($dsn, $usr, $pwd);
+    public static function getConnection(){
+
+        $dbLogin    = Configuration::get('db_login');
+        $dbPass     = Configuration::get('db_pass');
+        $dsn        = strtr('mysql:host=_HOST_;dbname=_NAME_;charset=utf8', [
+            '_HOST_' => Configuration::get('db_host'),
+            '_NAME_' => Configuration::get('db_name'),
+        ]);
+        
+        return new Database($dsn, $dbLogin, $dbPass);
     }
 }
 

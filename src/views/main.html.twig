@@ -6,7 +6,13 @@
         <div class="col-sm-12">
            <h3>Hello world!</h3>
             <h4>rand num : {{rand_num}}</h4>
+            <h2>{% if user %}Witaj! {{user['first_name']}}{% else %}not logged{% endif %}</h2>
         </div>
+       wynik: {{area(3,3)}}
+        <ul>
+            <li><a href="/login">login</a></li>
+            <li><a href="/logout">logout</a></li>
+        </ul>
     </div>
 </div>
 {% endblock %}

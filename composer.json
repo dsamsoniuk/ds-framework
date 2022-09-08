@@ -16,5 +16,8 @@
             "Src\\Controller\\": "src/controller",
             "Src\\Service\\": "src/service"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
     }
 }

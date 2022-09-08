@@ -3,9 +3,9 @@
 namespace Src\Controller;
 
 use App\Controller;
-use FaaPz\PDO\Clause\Conditional;
+use App\Parse;
+use App\Session;
 use Src\Service\MainService;
-use App\Validation;
 
 class MainController extends Controller {
 
@@ -18,15 +18,17 @@ class MainController extends Controller {
     }
 
     public function index(){
-        $rand = $this->service->getRandomNumber();
-        // $res = $this->service->getSelect();
-        
-        $getData = $this->get;
-        $val = Validation::parseInt($this->get);
-        $postData = $this->post;
+        $rand   = $this->service->getRandomNumber();
+        $res    = $this->service->getSelect();
+        $user   = Session::get('user');
+
 
         return $this->renderView('main.html.twig', [
-            'rand_num' => $rand
+            'rand_num' => $rand,
+            'user' => $user,
         ]);
+    }
+    public static function getNumber(){
+        return 123;
     }
 }

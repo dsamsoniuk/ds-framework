@@ -37,6 +37,15 @@
   </nav>
 </header>
 
+<div class="row">
+  <div class="col-sm-12">
+    {% for msg in getSessionMessages() %}
+      <div class="alert alert-{{msg['type']}}">
+        {{msg['message']}}
+      </div>
+  {% endfor %}
+  </div>
+</div>
 
     <!-- Begin page content -->
 <main role="main" class="flex-shrink-0">

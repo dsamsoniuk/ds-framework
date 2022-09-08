@@ -15,12 +15,9 @@ class Core {
         $route->findController();
         $controller = $route->getController();
         $method     = $route->getMethod();
-        $urlData    = $route->getUrlData();
 
         if ($controller && $method) {
             $c      = new $controller();
-            $c->setGlobalData();
-            $c->setUrlData($urlData);
             $html   = $c->{$method}();
             echo $html;
         } else {
@@ -31,7 +28,7 @@ class Core {
 }
 
 try {
-    session_start();
+    Session::start();
     $core = new Core();
     $core->init();
 } catch (Exception $e) {

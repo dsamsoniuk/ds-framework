@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Twig\Extension;
+
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
+
+class AppExtension extends AbstractExtension
+{
+    public function getFunctions()
+    {
+        return [
+            new TwigFunction('area', [$this, 'calculateArea']),
+        ];
+    }
+
+    public function calculateArea(int $width, int $length): int
+    {
+        return $width * $length;
+    }
+}

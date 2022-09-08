@@ -3,7 +3,6 @@
 namespace Src\Service;
 
 use App\Service;
-use FaaPz\PDO\Clause\Conditional;
 use App\Db;
 
 class MainService extends Service {
@@ -13,11 +12,11 @@ class MainService extends Service {
     }
 
     public function getSelect(){
-        $db = Db::getDatabase();
-        $query = [];
-        // $query = $db->select()->from('account')
-        // ->where(new Conditional("acct_num", ">", 1))
-        // ->execute()->fetchAll();
-        return $query;
+        $db = Db::getConnection();
+
+        return $db->select()
+            ->from('article')
+            ->execute()
+            ->fetchAll();
     }
 }

@@ -1,6 +1,26 @@
 # Micro framework CV
 
 
+TODO:
+
+* podlaczyc PDO
+* stworzyc fake dane i wrzucic automatycznie do bazy z konsoli
+* api (jak kontroler) i jakis domyslny token
+* stworzyc prostego uzytkownika i zabezpieczenie hasla
+* zabezpieczenie csrf
+* stworzyc tabelke article i jakies fake dane
+* stworzyc fabryke z twiga
+* stworzyc metody parsujace string i usuwajace niebezpieczne znaki
+* storzyc proste testy na service
+* zapis logow
+
+
+
+## run tests
+```bash
+./vendor/bin/phpunit --testdox tests
+```
+
 ## Install components
 
 Install dependeces of composer:

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Src\Controller\AuthController;
 use Src\Controller\MainController;
 
 class Routing {
@@ -38,17 +39,28 @@ class Routing {
      */
     private $routing = [
         [
+            'name'      => 'main.index',
             'class'     => MainController::class,
             'method'    => 'index',
             'route'     => '/',
-        ],
-        [
+        ],[
+            'name'      => 'main.index2',
             'class'     => MainController::class,
             'method'    => 'index',
             'route'     => '/test/{a}',
             'require'   => [
                 'a' => '\d+'
             ]
+        ],[
+            'name'      => 'auth.login',
+            'class'     => AuthController::class,
+            'method'    => 'login',
+            'route'     => '/login',
+        ],[
+            'name'      => 'auth.logout',
+            'class'     => AuthController::class,
+            'method'    => 'logout',
+            'route'     => '/logout',
         ]
     ];
     private $controller = false;
