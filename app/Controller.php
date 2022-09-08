@@ -3,7 +3,7 @@
 namespace App;
 
 use App\Templates\TemplateFabric;
-use App\Templates\TwigTemplate;
+use App\Templates\Twig\TwigTemplate;
 
 class Controller {
 

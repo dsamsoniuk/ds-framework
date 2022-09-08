@@ -5,7 +5,6 @@ TODO:
 
 * podlaczyc PDO
 * stworzyc fake dane i wrzucic automatycznie do bazy z konsoli
-* api (jak kontroler) i jakis domyslny token
 * stworzyc prostego uzytkownika i zabezpieczenie hasla
 * zabezpieczenie csrf
 * stworzyc tabelke article i jakies fake dane
@@ -13,6 +12,7 @@ TODO:
 * stworzyc metody parsujace string i usuwajace niebezpieczne znaki
 * storzyc proste testy na service
 * zapis logow
+* api (jak kontroler) i jakis domyslny token
 
 
 
