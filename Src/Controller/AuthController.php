@@ -20,29 +20,25 @@ class AuthController extends Controller {
 
         $auth       = new Authorization();
         if ($auth->isLoged()) {
-            Route::redirect('/');
+            Route::redirectByName('main.index');
         }
 
         if ($login && $password) {
             $result     = $auth->login($login, $password);
             if (!$result) {
-                Session::addMessage('Wrong login or password', 'danger');
+                Session::addMessage('Incorrect login or password', 'danger');
             } else {
-                Route::redirect('/');
-
+                Route::redirectByName('main.index');
             }
         }
 
-        return $this->renderView('login.html.twig', [
-      
-        ]);
-
+        return $this->renderView('login.html.twig', []);
     }
     public function logout(){
         $auth = new Authorization();
         $auth->logout();
         Session::addMessage('You have been logged out.');
 
-        Route::redirect('/');
+        Route::redirectByName('main.index');
     }
 }

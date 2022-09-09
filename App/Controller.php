@@ -5,7 +5,7 @@ namespace App;
 use App\Templates\TemplateFabric;
 use App\Templates\Twig\TwigTemplate;
 
-class Controller {
+abstract class Controller {
 
     protected $route;
 

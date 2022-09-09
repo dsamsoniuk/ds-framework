@@ -3,7 +3,7 @@
     "authors": [
         {
             "name": "Damian",
-            "email": "damian@portalmorski.pl"
+            "email": "dsamsoniuk@protonmail.com"
         }
     ],
     "require": {
@@ -12,9 +12,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app",
-            "Src\\Controller\\": "src/controller",
-            "Src\\Service\\": "src/service"
+            "App\\": "App",
+            "Src\\": "Src"
         }
     },
     "require-dev": {

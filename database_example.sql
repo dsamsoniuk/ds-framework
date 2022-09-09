@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 --
 -- Dumping data for table `user`
+-- login: jacekplacek
 -- password: damian
 
 INSERT INTO `user` (`user_id`, `username`, `first_name`, `last_name`, `gender`, `password`, `status`) VALUES

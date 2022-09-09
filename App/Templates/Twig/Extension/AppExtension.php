@@ -11,13 +11,18 @@ class AppExtension extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new TwigFunction('routeUrl', [$this, 'getRouteUrl']),
+            new TwigFunction('getRouteByName', [$this, 'getRouteByName']),
         ];
     }
 
-    public function getRouteUrl(string $url): string
+    /**
+     * @param string $name
+     * 
+     * @return string
+     */
+    public function getRouteByName(string $name): string
     {
-        $url = Route::getUrl($url);
+        $url = Route::getByName($name);
         return $url;
     }
 }

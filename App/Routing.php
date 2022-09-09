@@ -3,8 +3,11 @@
 namespace App;
 
 use App\Request\Request;
+use App\Secure\Csrf;
 use Exception;
+use Src\Controller\ArticleController;
 use Src\Controller\AuthController;
+use Src\Controller\ErrorController;
 use Src\Controller\MainController;
 
 class Routing {
@@ -46,9 +49,9 @@ class Routing {
             'method'    => 'index',
             'route'     => '/',
         ],[
-            'name'      => 'main.articles',
-            'class'     => MainController::class,
-            'method'    => 'articles',
+            'name'      => 'article.index',
+            'class'     => ArticleController::class,
+            'method'    => 'index',
             'route'     => '/articles',
             // 'require'   => [
             //     'a' => '\d+'
@@ -58,13 +61,20 @@ class Routing {
             'class'     => AuthController::class,
             'method'    => 'login',
             'route'     => '/login',
+            'secure'    => ['csrf']
         ],[
             'name'      => 'auth.logout',
             'class'     => AuthController::class,
             'method'    => 'logout',
             'route'     => '/logout',
+        ],[
+            'name'      => 'error.404',
+            'class'     => ErrorController::class,
+            'method'    => 'error404',
+            'route'     => '/error404',
         ]
     ];
+
     private $controller = false;
     /**
      * inti function
@@ -72,7 +82,10 @@ class Routing {
     public function __construct()
     {
         $req            = new Request();
+        $csrf           = new Csrf();
+
         $this->server   = $req->server->getAll();
+        $this->routing  = $csrf->addTokenToUrl($this->routing);
     }
     /**
      * getUrlData function
@@ -106,6 +119,19 @@ class Routing {
         return $this->controller !== false ? $this->routing[$this->controller] : false;
     }
     /**
+     * @param string $name
+     * 
+     * @return array|bool
+     */
+    public function getRouteByName(string $name){
+        foreach ($this->routing as $r) {
+            if ($r['name'] === $name) {
+                return $r;
+            }
+        }
+        return false;
+    }
+    /**
      * Undocumented function
      *
      * @return class|boolen
@@ -124,11 +150,11 @@ class Routing {
         foreach ($this->routing as $r) {
             // $currentRoute = explode('?', );
             if (!isset($r['require'])) { // Exception
-                $routes[] = '/'.str_replace('/', '\/', $r['route']).'$/';
+                $routes[] = '/'.str_replace('/', '\/', explode('?', $r['route'])[0]).'$/';
                 continue;
             }
             foreach ($r['require'] as $index => $val) {
-                $ur = str_replace('{'.$index.'}', $val, $r['route']);
+                $ur = str_replace('{'.$index.'}', $val, explode('?', $r['route'])[0]);
                 $routes[] = '/'.str_replace('/', '\/', $ur).'$/';
             }
         }
@@ -141,18 +167,6 @@ class Routing {
         }
     }
 
-    public function generateCsrfToken(){
-        $token = bin2hex(random_bytes(64));
-        Session::set('csrf_token', $token);
-    }
 
-    public function checkCsrfTokenIsCorrect(){
-        $req    = new Request();
-        $token  = $req->post->get('csrf_token') ?: $req->get->get('csrf_token') ?: '';
-        if ($token !== Session::get('csrf_token')){
-            Session::addMessage("Incorrect token", 'danger');
-            Route::redirect('/');
-        }
-    }
     
 }
