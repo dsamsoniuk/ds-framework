@@ -1,7 +1,12 @@
  ### How create route
  
+ In file public/index.php
  
- /**
+ ```php
+     $route->add([ 'name' => 'auth.login', 'class' => AuthController::class, 'method'=> 'login', 'route' => '/login', 
+      'secure'    => ['csrf']
+      ]);
+```
     * Helper:
     * https://www.phpliveregex.com/#tab-preg-grep
     * Cheat Sheet
@@ -31,4 +36,3 @@
     * a{3,6}	Between 3 and 6 of a
     *
     * @var array
-    */
