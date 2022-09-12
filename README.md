@@ -6,8 +6,9 @@
 * twig
 * PDO
 * segregation controllers, services, views, repository
-* routing list
+* routing list builder
 * csrf secure
+* factory template
 
 ## run tests
 ```bash
@@ -46,7 +47,7 @@ composer install
 ### How start - 3 steps
 
 1. Create file controller in src/controller
-1. Add route in app/Routing.php
+1. Add route in public/index.php  [routing](How_create_routing.md)
 1. Create view in src/views
 
 #### Additionaly
@@ -95,6 +96,5 @@ $affectedRows = $deleteStatement->execute();
 
 TODO:
 
-* builder route
 * add api rest
 * create unit tests

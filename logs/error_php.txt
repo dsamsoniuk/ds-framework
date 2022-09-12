@@ -1,3 +1,8 @@
 syntax error, unexpected 's' (T_STRING), expecting ';' or '{' :: 2022-09-12 13:51:18
 Return value of App\Templates\Twig\Extension\AppExtension::getRouteByName() must be of the type string, null returned :: 2022-09-12 14:18:45
 Return value of App\Templates\Twig\Extension\AppExtension::getRouteByName() must be of the type string, null returned :: 2022-09-12 14:18:45
+Class 'ArticleController' not found :: 2022-09-12 14:51:46
+Class 'ArticleController' not found :: 2022-09-12 14:52:34
+Class 'MainController' not found :: 2022-09-12 14:54:26
+Class 'MainController' not found :: 2022-09-12 14:54:27
+Class 'MainController' not found :: 2022-09-12 14:54:32

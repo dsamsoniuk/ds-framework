@@ -10,18 +10,30 @@ use App\Exceptions\RouteNotFoundException;
 use App\Log;
 use App\Request\Request;
 use App\Route;
-use App\Routing;
 use App\Session;
+use Src\Controller\ArticleController;
+use Src\Controller\AuthController;
+use Src\Controller\ErrorController;
+use Src\Controller\MainController;
 
 require_once('../vendor/autoload.php');
 
 try {
     Session::start();
     $request        = new Request();
-    $route          = new Routing();
+    $route          = Route::getInstance();
+
+    $route->add(['name' => 'main.index', 'class' => MainController::class,'method' => 'index','route' => '/',]);
+    $route->add(['name'=> 'article.index','class' => ArticleController::class, 'method'=> 'index', 'route'=> '/articles']);
+    $route->add([ 'name' => 'auth.login', 'class' => AuthController::class, 'method'=> 'login', 'route' => '/login', 
+    'secure'    => ['csrf']
+    ]);
+    $route->add(['name'=> 'auth.logout','class' => AuthController::class,'method' => 'logout','route'=> '/logout']);
+    $route->add(['name'=> 'error.404','class' => ErrorController::class,'method' => 'error404','route' => '/error404']);
 
     $core           = new Core($route, $request);
     $core->run();
+
 } catch (RouteNotFoundException $e) {
     Session::addMessage($e->getMessage(), 'warning');
     Route::redirectByName('error.404');

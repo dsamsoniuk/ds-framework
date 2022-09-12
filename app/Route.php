@@ -4,7 +4,20 @@ declare(strict_types = 1);
 namespace App;
 
 class Route {
-    
+    /**
+     * @var Routing $instance
+     */
+    private static $instance;
+
+    /**
+     * @return Routing
+     */
+    public static function getInstance() : Routing {
+        if (!isset(self::$instance)) {
+            self::$instance = new Routing();
+        }
+        return self::$instance;
+    }
     /**
      * @param string $url
      * 
@@ -22,7 +35,7 @@ class Route {
      * @return string
      */
     public static function getByName(string $name) : string {
-        $routing    = new Routing();
+        $routing    = self::getInstance();
         $route      = $routing->getRouteByName($name);
         $url        = '/';
         if ($route) {
