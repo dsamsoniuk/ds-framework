@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9a7b8791f4e0886c38df8b3b07e17ae4",
+    "content-hash": "2f66fa3233c3035ffb6927d841c98dca",
     "packages": [
         {
             "name": "faapz/pdo",
