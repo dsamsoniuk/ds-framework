@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Templates\TemplateFabric;
+use App\Templates\TemplateFactory;
 use App\Templates\Twig\TwigTemplate;
 
 abstract class Controller {
@@ -35,7 +35,7 @@ abstract class Controller {
      * @return string
      */
     public function renderTwigView($templateName, $params = []) : string {
-        $tpl = new TemplateFabric(new TwigTemplate());
+        $tpl = new TemplateFactory(new TwigTemplate());
         return $tpl->render($templateName, $params);
     }
 

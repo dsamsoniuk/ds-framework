@@ -39,9 +39,12 @@ class Core {
 
         if ($currentRoute && $method) {
             $c      = new $currentRoute['class']();
-
+            
+            $csrf   = new Csrf();
+            if (!Session::get('csrf_token')) {
+                $csrf->generateCsrfToken();
+            }
             if ($reqMethod == 'POST' && isset($currentRoute['secure']) && in_array('csrf', $currentRoute['secure'])) {
-                $csrf   = new Csrf();
                 $csrf->checkCsrfTokenIsCorrect();
                 $csrf->generateCsrfToken();
             }

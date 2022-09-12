@@ -36,7 +36,6 @@ class Csrf {
     public function addTokenToUrl(array $routing) : array {
 
         $token_csrf = Session::get('csrf_token');
-
         foreach ($routing as &$r) {
             if (isset($r['secure']) && in_array('csrf', $r['secure'])) {
                 $r['route'] .= (parse_url($r['route'], PHP_URL_QUERY) ? '&' : '?') . 'csrf_token='.$token_csrf;
@@ -44,4 +43,5 @@ class Csrf {
         }
         return $routing;
     }
+    
 }

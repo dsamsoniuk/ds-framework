@@ -2,7 +2,7 @@
 
 namespace App\Templates;
 
-class TemplateFabric {
+class TemplateFactory {
     
     /**
      * @var TemplateInterface $templateInterface
