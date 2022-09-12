@@ -9,13 +9,6 @@
 * routing list
 * csrf secure
 
-TODO:
-
-* zapis logow
-* api (jak kontroler) i jakis domyslny token
-* storzyc proste testy na service
-
-
 ## run tests
 ```bash
 composer run-script run-test
@@ -98,3 +91,10 @@ $deleteStatement = $pdo->delete()
 $affectedRows = $deleteStatement->execute();
 
 ```
+
+
+TODO:
+
+* builder route
+* add api rest
+* create unit tests

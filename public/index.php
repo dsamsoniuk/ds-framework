@@ -19,7 +19,8 @@ try {
     Session::start();
     $request        = new Request();
     $route          = new Routing();
-    $core = new Core($route, $request);
+
+    $core           = new Core($route, $request);
     $core->run();
 } catch (RouteNotFoundException $e) {
     Session::addMessage($e->getMessage(), 'warning');
