@@ -4,9 +4,8 @@ declare(strict_types=1);
 require_once('./vendor/autoload.php');
 
 use PHPUnit\Framework\TestCase;
-use Src\Controller\MainController;
 
-final class ControllerTest extends TestCase
+final class UserRepositoryTest extends TestCase
 {
     // public function testCanBeCreatedFromValidEmailAddress(): void
     // {

@@ -1,12 +1,11 @@
 # Micro framework CV
 
-Features:
+### Features:
 * authorization system (hash password) bcrypt
-* class for requests and session
 * parses
 * twig
 * PDO
-* segregation controllers, services, views
+* segregation controllers, services, views, repository
 * routing list
 * csrf secure
 
