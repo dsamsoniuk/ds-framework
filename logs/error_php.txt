@@ -1,0 +1,1 @@
+syntax error, unexpected 's' (T_STRING), expecting ';' or '{' :: 2022-09-12 13:51:18

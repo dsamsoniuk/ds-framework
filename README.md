@@ -30,8 +30,6 @@ composer install
 ```
 ## Configuration server
 
-Examples how configurate server.
-
 #### VHost - Apache - example
 
 ```txt
@@ -56,7 +54,7 @@ Examples how configurate server.
 
 1. Create file controller in src/controller
 1. Add route in app/Routing.php
-1. Create view in Src/views
+1. Create view in src/views
 
 #### Additionaly
 

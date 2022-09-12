@@ -20,7 +20,6 @@ class ArticleController extends Controller {
     public function index(){
 
         $articles   = $this->articleRepository->findAll();
-        $aaa   = $this->articleRepository->find(1111);
 
         return $this->renderView('articles.html.twig', [
             'articles' => $articles,

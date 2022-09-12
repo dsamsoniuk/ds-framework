@@ -7,6 +7,7 @@
         }
     ],
     "require": {
+        "php": ">=7.4",
         "twig/twig": "^3.0",
         "faapz/pdo": "^2.0"
     },

@@ -9,19 +9,6 @@ use Src\Repository\ArticleRepository;
 
 final class ArticleRepositoryTest extends TestCase
 {
-    // public function testCanBeCreatedFromValidEmailAddress(): void
-    // {
-    //     $this->assertInstanceOf(
-    //         Email::class,
-    //         Email::fromString('user@example.com')
-    //     );
-    // }
-
-    // public function testCannotBeCreatedFromInvalidEmailAddress(): void
-    // {
-    //     $this->expectException(InvalidArgumentException::class);
-    //     Email::fromString('invalid');
-    // }
 
     public function testFindAll(): void
     {
@@ -39,7 +26,7 @@ final class ArticleRepositoryTest extends TestCase
             $repo->find(1)
         );
 
-        $this->assertNull(
+        $this->assertIsArray(
             $repo->find(11111111)
         );
     }
