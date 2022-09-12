@@ -3,8 +3,13 @@
  In file public/index.php
  
  ```php
-     $route->add([ 'name' => 'auth.login', 'class' => AuthController::class, 'method'=> 'test', 'route' => '/test/{some_val}', 
-      'secure'    => ['csrf'], 'request' => ['some_val' => '\d+]
+     $route->add([ 
+        'name' => 'auth.login', 
+        'class' => AuthController::class, 
+        'method'=> 'test', 
+        'route' => '/test/{some_val}', 
+        'secure'    => ['csrf'], 
+        'require' => ['some_val' => '\d+]
       ]);
 ```
     * Helper:
