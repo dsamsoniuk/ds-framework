@@ -18,5 +18,8 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^9"
+    },
+    "scripts": {
+        "run-test": "./vendor/bin/phpunit"
     }
 }

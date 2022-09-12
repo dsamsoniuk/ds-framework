@@ -1,0 +1,1 @@
+{"version":1,"defects":{"ControllerTest::testCanBeUsedAssString":5,"Warning":6,"Test\\ArticleRepositoryTest::testFind":3},"times":{"ControllerTest::testCanBeUsedAssString":0.002,"Test\\ArticleRepositoryTest::testFindAll":0.005,"Warning":0.004,"Test\\ArticleRepositoryTest::testFind":0.002,"Test\\ConfigurationTest::testGetData":0}}

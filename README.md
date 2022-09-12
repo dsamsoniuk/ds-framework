@@ -18,7 +18,7 @@ TODO:
 
 ## run tests
 ```bash
-./vendor/bin/phpunit --testdox tests
+composer run-script run-test
 ```
 
 ## Install components

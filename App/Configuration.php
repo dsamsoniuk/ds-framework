@@ -12,7 +12,12 @@ class Configuration {
      * @return string
      */
     public static function get($name = '') : string {
-        $data = parse_ini_file(__DIR__.'/../'.self::FILE_NAME);
-        return isset($data[$name]) ? $data[$name] : '';
+        $filePath = __DIR__.'/../'.self::FILE_NAME;
+
+        if (file_exists($filePath)) {
+            $data = parse_ini_file($filePath);
+            return isset($data[$name]) ? $data[$name] : '';
+        }
+        return '';
     }
 }

@@ -16,22 +16,22 @@ abstract class Repository {
         return '';
     }
 
-    public function find(int $id) : array {
+    public function find(int $id) : ?array {
         $db = Db::getConnection();
         return $db
         ->select()
         ->from($this->table)
         ->where(new Conditional("id", "=", $id))
         ->execute()
-        ->fetch();
+        ->fetch() ?: null;
     }
 
-    public function findAll() : array {
+    public function findAll() : ?array {
         $db = Db::getConnection();
         return $db
         ->select()
         ->from($this->table)
         ->execute()
-        ->fetchAll();
+        ->fetchAll() ?: null;
     }
 }

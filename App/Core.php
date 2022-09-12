@@ -2,22 +2,40 @@
 
 namespace App;
 
+use App\Exceptions\RouteNotFoundException;
 use App\Request\Request;
+use App\Routing;
 use App\Secure\Csrf;
-use Exception;
 
 class Core {
 
     /**
-     * @return string
+     * @var Routing $route
      */
-    public function run() : string {
-        $request        = new Request();
-        $route          = new Routing();
-        $route->findController();
-        $currentRoute   = $route->getRouteByController();
-        $method         = $route->getMethod();
-        $reqMethod      = $request->server->get('REQUEST_METHOD');
+    private $route;
+    /**
+     * @var Request $request
+     */
+    private $request;
+
+    /**
+     * @param Routing $route
+     * @param Request $request
+     */
+    public function __construct(Routing $route, Request $request)
+    {
+        $this->route = $route;
+        $this->request = $request;
+    }
+    /**
+     * @return void
+     */
+    public function run() : void {
+
+        $this->route->findController();
+        $currentRoute   = $this->route->getRouteByController();
+        $method         = $this->route->getMethod();
+        $reqMethod      = $this->request->server->get('REQUEST_METHOD');
 
         if ($currentRoute && $method) {
             $c      = new $currentRoute['class']();
@@ -29,11 +47,10 @@ class Core {
             }
 
             $html   = $c->{$method}();
-            return $html;
+            echo $html;
         } else {
-            throw new Exception('Error 404 - Page not found');
+            throw new RouteNotFoundException();
         }
-        return '';
     }
 }
 
