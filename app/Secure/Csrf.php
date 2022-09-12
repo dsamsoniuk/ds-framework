@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace App\Secure;
 
@@ -7,19 +8,19 @@ use App\Route;
 use App\Session;
 
 class Csrf {
-    
+
     /**
-     * @return [type]
+     * @return void
      */
-    public function generateCsrfToken(){
+    public function generateCsrfToken() : void {
         $token = bin2hex(random_bytes(64));
         Session::set('csrf_token', $token);
     }
 
     /**
-     * @return [type]
+     * @return void
      */
-    public function checkCsrfTokenIsCorrect(){
+    public function checkCsrfTokenIsCorrect() : void {
         $req    = new Request();
         $token  = $req->post->get('csrf_token') ?: '';
         

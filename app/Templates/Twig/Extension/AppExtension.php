@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace App\Templates\Twig\Extension;
 
@@ -8,7 +9,7 @@ use Twig\TwigFunction;
 
 class AppExtension extends AbstractExtension
 {
-    public function getFunctions()
+    public function getFunctions() : array
     {
         return [
             new TwigFunction('getRouteByName', [$this, 'getRouteByName']),

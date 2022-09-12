@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace App\Request;
 
@@ -13,8 +14,8 @@ class Method {
         $this->method = $method;
     }
 
-    public function get(string $name) {
-        return isset($this->method[$name]) ? $this->method[$name] : false;
+    public function get(string $name) : string {
+        return isset($this->method[$name]) ? $this->method[$name] : '';
     }
     public function getAll(){
         return $this->method;

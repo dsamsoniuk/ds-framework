@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace App\Templates\Twig;
 
@@ -6,7 +7,7 @@ use App\Templates\TemplateInterface;
 
 class TwigTemplate implements TemplateInterface {
 
-    public function renderView(string $name, array $params)
+    public function renderView(string $name, array $params) : string
     {
         $loader = new \Twig\Loader\FilesystemLoader('../src/views');
         $twig   = new \Twig\Environment($loader);

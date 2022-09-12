@@ -53,6 +53,7 @@ class Routing {
             'class'     => ArticleController::class,
             'method'    => 'index',
             'route'     => '/articles',
+            // 'route'     => '/articles/{a}',
             // 'require'   => [
             //     'a' => '\d+'
             // ]
@@ -87,29 +88,7 @@ class Routing {
         $this->server   = $req->server->getAll();
         $this->routing  = $csrf->addTokenToUrl($this->routing);
     }
-    /**
-     * getUrlData function
-     *
-     * @return void
-     */
-    public function getUrlData(){
-        if ($this->controller === false) {
-            return [];
-        }
-        $routing        = $this->routing[$this->controller];
-        $actual_link    = explode('?', $this->server['REQUEST_URI'])[0];
-        $currentUrl     = explode('/', $actual_link); // ['test','232']
-        $routeUrl       = explode('/', $routing['route']); // ['test', '{a}']
-        $data           = [];
-        foreach ($routeUrl as $index => $part) {
-            if ($part && strpos($part, '{') !== false) {
-                $valName        = str_replace('{','', $part);
-                $valName        = str_replace('}','', $valName);
-                $data[$valName] = $currentUrl[$index];
-            }
-        }
-        return $data;
-    }
+
     /**
      * Undocumented function
      *
@@ -146,20 +125,23 @@ class Routing {
      */
     public function findController(){
         $routes         = [];
-        $actual_link    = explode('?', $this->server['REQUEST_URI'])[0];
+        $currentLink    = explode('?', $this->server['REQUEST_URI'])[0];
+        // Preparing regex for all routes
         foreach ($this->routing as $r) {
-            // $currentRoute = explode('?', );
-            if (!isset($r['require'])) { // Exception
+
+            if (!isset($r['require'])) {
                 $routes[] = '/'.str_replace('/', '\/', explode('?', $r['route'])[0]).'$/';
                 continue;
             }
+            // replace values with regex substitute (example: 123 with d+)
             foreach ($r['require'] as $index => $val) {
                 $ur = str_replace('{'.$index.'}', $val, explode('?', $r['route'])[0]);
                 $routes[] = '/'.str_replace('/', '\/', $ur).'$/';
             }
         }
+        // Find by regex list current link (example: "/\/articles\/\d+$/")
         foreach ($routes as $index => $route) {
-            $res = preg_grep($route, [$actual_link]);
+            $res = preg_grep($route, [$currentLink]);
             if (!empty($res)){
                 $this->controller = $index;
                 break;

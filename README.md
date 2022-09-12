@@ -62,7 +62,7 @@ composer install
 
 #### Usage database
 
-I added module https://github.com/FaaPz/PDO you can find there examples how use, here small example:
+I added module https://github.com/FaaPz/PDO you can find there examples how use, here is samplke:
 ```php
 
 //SELECT

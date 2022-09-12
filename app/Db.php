@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace App;
 
@@ -14,7 +15,7 @@ class Db {
     /**
      * @return Database
      */
-    public static function getConnection() : Database{
+    public static function getConnection() : Database {
 
         $dbLogin    = Configuration::get('db_login');
         $dbPass     = Configuration::get('db_pass');
