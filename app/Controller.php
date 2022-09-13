@@ -8,17 +8,6 @@ use App\Templates\Twig\TwigTemplate;
 
 abstract class Controller {
 
-    protected $route;
-
-    /**
-     * @param array $route
-     * 
-     * @return void
-     */
-    public function addCurrentRoute(array $route = []) : void {
-        $this->route = $route;
-    }
-
     /**
      * @param mixed $templateName
      * @param array $params
