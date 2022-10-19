@@ -20,8 +20,7 @@ class Parse {
      * @return string
      */
     public static function string($value) : string{
-        $value = @strip_tags($value);
-        $value = @stripslashes($value);
+        $value = @htmlentities($value);
 
         return $value;
     }

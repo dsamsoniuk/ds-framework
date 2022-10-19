@@ -15,5 +15,5 @@ class Request {
         $this->post     = new Method($_POST);
         $this->server   = new Method($_SERVER);
     }
-
+    
 }

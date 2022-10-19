@@ -6,3 +6,6 @@ Class 'ArticleController' not found :: 2022-09-12 14:52:34
 Class 'MainController' not found :: 2022-09-12 14:54:26
 Class 'MainController' not found :: 2022-09-12 14:54:27
 Class 'MainController' not found :: 2022-09-12 14:54:32
+Access to undeclared static property: App\Db::$db :: 2022-09-13 09:47:24
+Access to undeclared static property: App\Db::$db :: 2022-09-13 09:47:27
+Access to undeclared static property: App\Db::$db :: 2022-09-13 09:47:29
