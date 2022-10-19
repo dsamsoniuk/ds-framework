@@ -8,6 +8,7 @@ use App\Secure\Csrf;
 
 class Routing {
    
+    private $url = '';
     private $routing = [];
 
     private $controller = false;
@@ -21,6 +22,8 @@ class Routing {
 
         $this->server   = $req->server->getAll();
         $this->routing  = $csrf->addTokenToUrl($this->routing);
+        $this->url      = explode('?', $this->server['REQUEST_URI'])[0];
+
     }
 
     /**
@@ -68,7 +71,7 @@ class Routing {
      */
     public function findController(){
         $routes         = [];
-        $currentLink    = explode('?', $this->server['REQUEST_URI'])[0];
+
         // Preparing regex for all routes
         foreach ($this->routing as $r) {
 
@@ -84,12 +87,23 @@ class Routing {
         }
         // Find by regex list current link (example: "/\/articles\/\d+$/")
         foreach ($routes as $index => $route) {
-            $res = preg_grep($route, [$currentLink]);
+            $res = preg_grep($route, [$this->url]); // "/\/user\/\d+$/" "/user/1"
             if (!empty($res)){
                 $this->controller = $index;
                 break;
             }
         }
     }
-    
+    public function addUrlData(Request $req) {
+
+        $route = $this->getRouteByController();
+        $routeLinkGrouped = preg_split('/\//', $route['route']);
+        $urlGrouped = preg_split('/\//', $this->url);
+        foreach ($routeLinkGrouped as $index => $word) {
+           // if value between '{xxyy}' exists then add to GetMethod
+           if (preg_match('/{\w+}/', $word)) {
+                $req->get->set( str_replace(array('{','}'), '', $word) , $urlGrouped[$index]);
+           }
+        }
+    }
 }

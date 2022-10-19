@@ -21,11 +21,28 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 --
 -- Dumping data for table `user`
--- login: jacekplacek
+-- login: admin
 -- password: damian
 
 INSERT INTO `user` (`user_id`, `username`, `first_name`, `last_name`, `gender`, `password`, `status`) VALUES
-(1, 'jacekplacek', 'Jacek', 'Placek', 'Male', '$2y$10$txCFjwRTwuBdhiJ.NnBpMOSW7nvRgkVI.WuJw/9So1Ue4sk/dnpu2', 1);
+(1, 'admin', 'Jacek', 'Placek', 'Male', '$2y$10$txCFjwRTwuBdhiJ.NnBpMOSW7nvRgkVI.WuJw/9So1Ue4sk/dnpu2', 1);
+
+
+CREATE TABLE IF NOT EXISTS `customer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `customer_name` varchar(255) DEFAULT NULL,
+  `company_name` varchar(255) DEFAULT NULL,
+  `address` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `post_code` varchar(10) DEFAULT NULL,
+  `province` varchar(255) DEFAULT NULL,
+  `phone_nr` int(5) DEFAULT NULL,
+  `pesel` int(5) DEFAULT NULL,
+  `nip` int(5) DEFAULT NULL,
+  `status` tinyint(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=UTF8 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `article` (
     `id` int(11) NOT NULL AUTO_INCREMENT,

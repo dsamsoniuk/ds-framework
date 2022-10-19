@@ -9,7 +9,7 @@
         'method'=> 'test', 
         'route' => '/test/{some_val}', 
         'secure'    => ['csrf'], 
-        'require' => ['some_val' => '\d+]
+        'require' => ['some_val' => '\d+']
       ]);
 ```
     * Helper:

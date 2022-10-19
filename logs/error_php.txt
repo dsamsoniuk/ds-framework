@@ -1,11 +1,12 @@
-syntax error, unexpected 's' (T_STRING), expecting ';' or '{' :: 2022-09-12 13:51:18
-Return value of App\Templates\Twig\Extension\AppExtension::getRouteByName() must be of the type string, null returned :: 2022-09-12 14:18:45
-Return value of App\Templates\Twig\Extension\AppExtension::getRouteByName() must be of the type string, null returned :: 2022-09-12 14:18:45
-Class 'ArticleController' not found :: 2022-09-12 14:51:46
-Class 'ArticleController' not found :: 2022-09-12 14:52:34
-Class 'MainController' not found :: 2022-09-12 14:54:26
-Class 'MainController' not found :: 2022-09-12 14:54:27
-Class 'MainController' not found :: 2022-09-12 14:54:32
-Access to undeclared static property: App\Db::$db :: 2022-09-13 09:47:24
-Access to undeclared static property: App\Db::$db :: 2022-09-13 09:47:27
-Access to undeclared static property: App\Db::$db :: 2022-09-13 09:47:29
+
+Call to a member function createView() on null :: 2022-10-19 15:18:32
+syntax error, unexpected '}', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' :: 2022-10-19 15:18:57
+Return value of App\Request\Method::get() must be of the type string, integer returned :: 2022-10-19 18:55:22
+Return value of App\Request\Method::get() must be of the type string, integer returned :: 2022-10-19 18:55:26
+Return value of App\Request\Method::get() must be of the type string, integer returned :: 2022-10-19 18:55:33
+Return value of App\Request\Method::get() must be of the type string, integer returned :: 2022-10-19 18:55:38
+Cannot access private property App\Request\GetMethod::$method :: 2022-10-19 19:18:16
+Cannot access private property App\Request\GetMethod::$method :: 2022-10-19 19:18:17
+Cannot access private property App\Request\GetMethod::$method :: 2022-10-19 19:18:19
+Cannot access private property App\Request\GetMethod::$method :: 2022-10-19 19:18:34
+Cannot access private property App\Request\GetMethod::$method :: 2022-10-19 19:19:21

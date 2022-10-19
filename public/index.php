@@ -1,10 +1,8 @@
 <?php
 
 // TODO: only for test code
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
 
+use App\Configuration;
 use App\Core;
 use App\Exceptions\RouteNotFoundException;
 use App\Log;
@@ -15,8 +13,16 @@ use Src\Controller\ArticleController;
 use Src\Controller\AuthController;
 use Src\Controller\ErrorController;
 use Src\Controller\MainController;
+use Src\Controller\UserController;
 
 require_once('../vendor/autoload.php');
+
+
+// if (Configuration::get('debug') == "1") {
+//     ini_set('display_errors', 1);
+//     ini_set('display_startup_errors', 1);
+//     error_reporting(E_ALL);
+// }
 
 try {
     Session::start();
@@ -30,6 +36,13 @@ try {
     ]);
     $route->add(['name'=> 'auth.logout','class' => AuthController::class,'method' => 'logout','route'=> '/logout']);
     $route->add(['name'=> 'error.404','class' => ErrorController::class,'method' => 'error404','route' => '/error404']);
+
+    $route->add(['name'=> 'user.add','class' => UserController::class, 'method'=> 'add', 'route'=> '/user/add']);
+    $route->add(['name'=> 'user.add','class' => UserController::class, 'method'=> 'add', 'route'=> '/user/{customer}', 
+        'require' => [
+            'customer' => '\d+'
+        ]
+    ]);
 
     $core           = new Core($route, $request);
     $core->run();

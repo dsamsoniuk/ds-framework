@@ -1,0 +1,18 @@
+
+
+alert:
+{% for error in form['errors'] %}
+    <li>
+        {{error}}
+    </li>
+{% endfor %}
+
+<form action="{{ getRouteByName(form['route_name']) }}" method="{{form['method']}}">
+    {% for field in form['fields'] %}
+        {% if field['data']['label'] is defined %}
+            <label>{{field['data']['label']}}</label>
+        {% endif %}
+        <input type="{{field['type_name']}}" name="{{field['name']}}" value="{{field['data']['value']}}">
+    {% endfor %}
+    <input type="submit" value="addUser" >
+</form>
