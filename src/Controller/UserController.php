@@ -32,19 +32,25 @@ class UserController extends Controller {
     }
     public function add(){
         UserService::requiredLogedIn();
-        $customer       = [];
-
         $req            = new Request();
-        $customerId     = intval($req->get->get('customer'));
+
+        $customer       = [];
+        $customerId     = intval($req->get->get('customer') ?: 0);
+        $customerType   = $req->get->get('type');
+        $customer       = $this->customerRepository->find($customerId);
+
         $addUserForm    = new AddUserForm();
         $form           = $addUserForm->create([
-            'id' => $customerId
+            'customer'  => $customer,
+            'type'      => $customerType
         ]);
 
         if ($req->server->get('REQUEST_METHOD') == 'POST') {
             $form->setDataForm($req->post->getAll());
-        } else if ($customerId) {
-            $customer = $this->customerRepository->find($customerId);
+        } else if ($customer) {
+            if ($customerType) {
+                $customer['type'] = $customerType;
+            }
             $form->setDataForm($customer);
         }
 

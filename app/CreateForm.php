@@ -27,7 +27,7 @@ class CreateForm {
             'name' => $formName ? $formName.'['.$name.']' : $name,
             'type' => $type,
             'type_name' => $type->getType(),
-            'data' => $data
+            'data' => array_merge($type->addParams(), $data)
         ];
         return $this;
     }

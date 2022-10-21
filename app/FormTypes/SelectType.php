@@ -21,5 +21,7 @@ class SelectType implements TypeInterface {
     public function getMessage() : string {
         return "Nie poprawne pole wyboru";
     }
-    
+    public function addParams() : array {
+        return [];
+    }
 }

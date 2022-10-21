@@ -15,17 +15,17 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <td>ID</td>
-                        <td>Klient</td>
-                        <td>Firma</td>
+                        <td>#</td>
+                        <td>Typ</td>
+                        <td>Województwo</td>
                         <td></td>
                     </tr>
                 </thead>
                 {% for customer in customers %}
                     <tr>
                         <td>{{customer['id']}}</td>
-                        <td>{{customer['customer_name']}}</td>
-                        <td>{{customer['company_name']}}</td>
+                        <td>{{customer['type']}}</td>
+                        <td>{{customer['province']}}</td>
                         <td>
                             <a class="btn btn-success" href="{{ getRouteByName('user.view', {'id' : customer['id']}) }}">view</a>
                             <a class="btn btn-secondary" href="{{ getRouteByName('api.user', {'id' : customer['id']}) }}">json</a>

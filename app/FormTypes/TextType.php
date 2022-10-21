@@ -21,5 +21,7 @@ class TextType implements TypeInterface {
     public function getMessage() : string {
         return "Nie poprawne pole";
     }
-    
+    public function addParams() : array {
+        return [];
+    }
 }

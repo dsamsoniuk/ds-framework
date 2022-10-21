@@ -20,5 +20,7 @@ class SubmitType implements TypeInterface {
     public function getMessage() : string {
         return "Nie poprawna wartosc";
     }
-    
+    public function addParams() : array {
+        return [];
+    }
 }

@@ -12,6 +12,30 @@ function toggleFormFields($form, hideFields = ''){
 
 $(function(){
 
+    $('.reload').on('click', function(){
+        var url = window.location.href;    
+        var param = $(this).data('redirect-with-param')
+        var parser = new URL(url || window.location);
+
+        if (typeof param == 'undefined') {
+            return
+        } else {
+            param = param.split('=')
+            parser.searchParams.set(param[0], param[1]);
+        }
+
+        window.location = parser.href;
+    })
+
+    $.validator.addMethod(
+        "matches",
+        function(value, element, regexp) {
+          var re = new RegExp(regexp);
+          return this.optional(element) || re.test(value);
+        },
+        "Nie poprawna wartość"
+      );
+
     var select = $('.external-select')
 
     if (select.length) {
@@ -25,17 +49,19 @@ $(function(){
             })
     }
 
-    $('.group-checkbox-one').on('click', '[type="checkbox"]', function(e){
-        var formId = $(e.delegateTarget).data('form-id')
-        var hideFields = $(this).data('fields-hide')
+    $("#edit_user_form").validate({
+        errorPlacement: function(error, element) {
+            // error.addClass('').find('in')
 
-        $(e.delegateTarget).find('[type="checkbox"]').not( $(this)).prop('checked', false);
-        toggleFormFields($('#'+formId), hideFields.split(','))
+            var inputRow = $(element).closest('.input-row')
+            var alert = jQuery('<div>', {
+                id: 'some-id',
+                class: 'alert alert-danger w-100',
+            }).html(inputRow.data('error-message'))
+
+            inputRow.find('.error-placement').html(alert)
+        },
     });
-
-    $('.group-checkbox-one').find('input:checked').trigger('click').prop('checked', true);
-
-    $("#edit_user_form").validate();
     $("#add_user_form").validate();
 
 })

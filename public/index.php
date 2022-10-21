@@ -46,11 +46,11 @@ try {
     $route->add(['name'=> 'admin.client.list','class' => AdminController::class, 'method'=> 'clientList', 'route'=> '/admin/clients']);
 
     // user
-    $route->add(['name'=> 'user.add','class' => UserController::class, 'method'=> 'add', 'route'=> '/user/add']);
-    $route->add(['name'=> 'user.edit','class' => UserController::class, 'method'=> 'add', 'route'=> '/user/edit/{customer}', 
+    $route->add(['name'=> 'user.add','class' => UserController::class, 'method'=> 'add', 'route'=> '/client/add']);
+    $route->add(['name'=> 'user.edit','class' => UserController::class, 'method'=> 'add', 'route'=> '/client/edit/{customer}', 
         'require' => ['customer' => '\d+']
     ]);
-    $route->add(['name'=> 'user.delete','class' => UserController::class, 'method'=> 'delete', 'route'=> '/user/delete/{id}', 
+    $route->add(['name'=> 'user.delete','class' => UserController::class, 'method'=> 'delete', 'route'=> '/client/delete/{id}', 
         'require' => ['id' => '\d+']]);
 
     $route->add(['name'=> 'user.view','class' => UserController::class, 'method'=> 'view', 'route'=> '/client/{id}', 

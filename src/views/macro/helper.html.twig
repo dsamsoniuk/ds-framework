@@ -1,0 +1,3 @@
+{% macro attrToString(attributes) %}
+    {% for key,val in attributes %}{{key}}="{{val}}" {% endfor %}
+{% endmacro %}
