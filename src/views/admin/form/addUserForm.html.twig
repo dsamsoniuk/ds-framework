@@ -48,12 +48,14 @@
 
                     {% endif %}
                     
-                    <div class="error-placement"></div>
-                    {% if field['error'] is defined %}
+                    <div class="error-placement">
+                        {% if field['error'] is defined %}
                         <div class="alert alert-danger">
                             {{field['error']}}
                         </div>
                     {% endif %}
+                    </div>
+                   
                         
                 </div>
             </div>

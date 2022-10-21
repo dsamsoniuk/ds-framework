@@ -9,6 +9,11 @@ class TextType implements TypeInterface {
 
     public function valid($value)
     {
+        $params = $this->addParams();
+        if (isset($params['matches'])) {
+            return !empty(preg_match('/'.$params['matches'].'/', $value));
+        }
+        // preg_match('/[0-9\-\(\)\s]+$/', $input_line, $output_array);
         return is_string($value);
     }
     public function parse($value) {
@@ -19,7 +24,7 @@ class TextType implements TypeInterface {
     }
     
     public function getMessage() : string {
-        return "Nie poprawne pole";
+        return "Nie poprawna wartosc";
     }
     public function addParams() : array {
         return [];

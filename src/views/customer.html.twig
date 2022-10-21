@@ -6,11 +6,11 @@
 
     <div class="row">
         <div class="col-sm-12">
-           <h4>Dane identyfikacyjne</h4>
-           <ul>
-            {% for key,prop in customer %}
-                <li><b>{{key}}</b> - {{prop}}</li>
-            {% endfor %}
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-action active">Dane klienta</li>
+                {% for key,prop in customer %}
+                    <li class="list-group-item"><b>{{key}}</b>: {{prop}} </li>
+                {% endfor %}
             </ul>
         </div>
     </div>

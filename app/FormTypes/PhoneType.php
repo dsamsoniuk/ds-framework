@@ -11,15 +11,18 @@ class PhoneType implements TypeInterface {
         return [
             'matches' => '[0-9]{9}',
             'prefix' => '+48',
-            'maxLength' => 9
+            'maxLength' => 9,
+            'minLength' => 0
         ];
     }
 
     public function valid($value)
     {
         $params = $this->addParams();
-        // preg_match('/[0-9\-\(\)\s]+$/', $input_line, $output_array);
-        return !empty(preg_match('/'.$params['matches'].'/', $value));
+        if ($value) {
+            return !empty(preg_match('/'.$params['matches'].'/', $value));
+        }
+        return true;
     }
     public function parse($value) : string {
         return $value;

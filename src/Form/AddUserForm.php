@@ -25,7 +25,7 @@ class AddUserForm implements FormInterface {
             ? $data['type'] :( empty($data['customer'])
             ? 'client' : $data['customer']['type']) ;
 
-        $form = new CreateForm('user.add', 'add_user');
+        $form = new CreateForm('user.add');
 
         $form
             ->add('id', new HiddenType())
@@ -46,9 +46,7 @@ class AddUserForm implements FormInterface {
         if ($type == 'client') {
             $form->add('customer_name', new TextType(), [
                 'label' => 'Imię i nazwisko',
-                'value' => 2,
                 'class' => 'form-control',
-                'minlength' => 2,
                 'required' => 'required'
             ]);
         } else if ($type == 'company'){
@@ -64,7 +62,7 @@ class AddUserForm implements FormInterface {
                 'label' => 'Ulica',
                 'class' => 'form-control',
             ])
-            ->add('house_nr', new TextType(), [
+            ->add('house_nr', new NumberType(), [
                 'label' => 'Numer mieszkania',
                 'class' => 'form-control',
             ])
@@ -92,16 +90,20 @@ class AddUserForm implements FormInterface {
             ;
           
             if ($type == 'client') {
-                $form->add('pesel', new NumberType(), [
+                $form->add('pesel', new TextType(), [
                     'label' => 'PESEL',
                     'class' => 'form-control',
-                    'required' => 'required'
+                    'required' => 'required',
+                    'matches' => '[0-9]{11}',
+                    'maxlength' => 11
                 ]);
             } else if ($type == 'company'){
-                $form->add('nip', new NumberType(), [
+                $form->add('nip', new TextType(), [
                     'label' => 'NIP',
                     'class' => 'form-control',
-                    'required' => 'required'
+                    'required' => 'required',
+                    'matches' => '[0-9]{11}',
+                    'maxlength' => 11
                 ]);
             }
 

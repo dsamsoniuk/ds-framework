@@ -35,7 +35,7 @@ class UserController extends Controller {
         $req            = new Request();
 
         $customer       = [];
-        $customerId     = intval($req->get->get('customer') ?: 0);
+        $customerId     = intval($req->get->get('customer') ?: $req->post->get('id') ?: 0);
         $customerType   = $req->get->get('type');
         $customer       = $this->customerRepository->find($customerId);
 

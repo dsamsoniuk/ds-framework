@@ -1,4 +1,3 @@
-console.log('hello')
 
 function toggleFormFields($form, hideFields = ''){
     var field;
@@ -10,7 +9,32 @@ function toggleFormFields($form, hideFields = ''){
     }
 }
 
+$.validator.addMethod(
+    "matches",
+    function(value, element, regexp) {
+      var re = new RegExp(regexp);
+      return this.optional(element) || re.test(value);
+    },"Nie poprawna wartość"
+);
+
+
 $(function(){
+
+    var select = $('.external-select')
+    var validConfig = {
+        errorPlacement: function(error, element) {
+            var inputRow = $(element).closest('.input-row')
+            var alert = jQuery('<div>', {
+                id: 'some-id',
+                class: 'alert alert-danger w-100',
+            }).html(inputRow.data('error-message'))
+
+            inputRow.find('.error-placement').html(alert)
+        },
+    }
+
+    $("#edit_user_form").validate(validConfig);
+    // $("#add_user_form").validate(validConfig);
 
     $('.reload').on('click', function(){
         var url = window.location.href;    
@@ -27,17 +51,6 @@ $(function(){
         window.location = parser.href;
     })
 
-    $.validator.addMethod(
-        "matches",
-        function(value, element, regexp) {
-          var re = new RegExp(regexp);
-          return this.optional(element) || re.test(value);
-        },
-        "Nie poprawna wartość"
-      );
-
-    var select = $('.external-select')
-
     if (select.length) {
         var url = select.data('url');
 
@@ -48,20 +61,4 @@ $(function(){
                 }
             })
     }
-
-    $("#edit_user_form").validate({
-        errorPlacement: function(error, element) {
-            // error.addClass('').find('in')
-
-            var inputRow = $(element).closest('.input-row')
-            var alert = jQuery('<div>', {
-                id: 'some-id',
-                class: 'alert alert-danger w-100',
-            }).html(inputRow.data('error-message'))
-
-            inputRow.find('.error-placement').html(alert)
-        },
-    });
-    $("#add_user_form").validate();
-
 })
