@@ -24,7 +24,7 @@ class TextType implements TypeInterface {
     }
     
     public function getMessage() : string {
-        return "Nie poprawna wartosc";
+        return "Nie poprawna wartość";
     }
     public function addParams() : array {
         return [];

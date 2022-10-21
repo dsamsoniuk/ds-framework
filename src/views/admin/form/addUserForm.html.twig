@@ -6,13 +6,20 @@
         {{error}}
     </div>
 {% endfor %}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="h4">Dane identyfikacyjne</div>
+        <hr>
+    </div>
+</div>
+<div class="row">
+
 
 <div class="col-sm-8">
-
     <form action="{{ getRouteByName(form['route_name']) }}" method="{{form['method']}}" id="edit_user_form">
         {% for key,field in form['fields'] %}
         <div class="row m-1 input-row" data-error-message="{{field['type'].getMessage()}}">
-            <div class="col-sm-6">
+            <div class="col-sm-6 text-right">
                 {% if field['data']['label'] is defined %}
                     <label>{{field['data']['label']}}</label>
                 {% elseif field['type_name'] == 'hidden' %}
@@ -60,6 +67,13 @@
                 </div>
             </div>
         {% endfor %}
+        <div class="m-2">
+            <button type="submit" class="btn btn-info float-right">{{formSubmit}}</button> 
+            <a href="{{ getRouteByName('admin.client.list') }}" class="btn btn-light float-right mr-3">ANULUJ</a>
+    
+        </div>
+
     </form>
 </div>
 
+</div>

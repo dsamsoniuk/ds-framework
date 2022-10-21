@@ -31,7 +31,7 @@ class PhoneType implements TypeInterface {
         return $this->type;
     }
     public function getMessage() : string {
-        return "Nie poprawna wartosc, podaj 9 cyfr";
+        return "Nie poprawna wartość, podaj 9 cyfr";
     }
     
 }

@@ -107,11 +107,12 @@ class AddUserForm implements FormInterface {
                 ]);
             }
 
-        $form->add('submit', new SubmitType(), [
-            'label' => '',
-            'class' => 'btn btn-success mt-2',
-            'value' => empty($data['customer']) ? 'Add new client' : 'Edit client' 
-        ]);
+        // $form
+        // ->add('submit', new SubmitType(), [
+        //     'label' => '',
+        //     'class' => 'btn btn-success mt-2',
+        //     'value' => empty($data['customer']) ? 'Add new client' : 'Edit client' 
+        // ]);
         return $form;
     }
 

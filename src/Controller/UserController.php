@@ -72,7 +72,7 @@ class UserController extends Controller {
 
         return $this->renderView('admin/user.html.twig', [
             'form' => $view,
-            'isCompany' => isset($customer['nip']) && $customer['nip']
+            'formSubmit' => $customerId ? 'EDYCJA' : 'DODAJ'
         ]);
     }
 

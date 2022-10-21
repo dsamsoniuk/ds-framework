@@ -27,10 +27,10 @@
                         <td>{{customer['type']}}</td>
                         <td>{{customer['province']}}</td>
                         <td>
-                            <a class="btn btn-success" href="{{ getRouteByName('user.view', {'id' : customer['id']}) }}">view</a>
+                            <a class="btn btn-success" href="{{ getRouteByName('user.view', {'id' : customer['id']}) }}">Podgląd</a>
                             <a class="btn btn-secondary" href="{{ getRouteByName('api.user', {'id' : customer['id']}) }}">json</a>
-                            <a class="btn btn-info" href="{{ getRouteByName('user.edit', {'customer' : customer['id']}) }}">edit</a>
-                            <a class="btn btn-danger" href="{{ getRouteByName('user.delete', {'id' : customer['id']}) }}">delete</a>
+                            <a class="btn btn-info" href="{{ getRouteByName('user.edit', {'customer' : customer['id']}) }}">Edycja</a>
+                            <a class="btn btn-danger" href="{{ getRouteByName('user.delete', {'id' : customer['id']}) }}">Usuń</a>
 
                         </td>
                     </tr>

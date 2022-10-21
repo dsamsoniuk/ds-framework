@@ -18,7 +18,7 @@ class SubmitType implements TypeInterface {
         return $this->type;
     }
     public function getMessage() : string {
-        return "Nie poprawna wartosc";
+        return "Nie poprawna wartość";
     }
     public function addParams() : array {
         return [];
