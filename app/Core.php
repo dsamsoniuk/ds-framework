@@ -39,7 +39,7 @@ class Core {
         $reqMethod      = $this->request->server->get('REQUEST_METHOD');
         $this->route->addUrlData($this->request);
 
-        $this->request->get->set('cc','hghghg');
+        // $this->request->get->set('cc','hghghg');
 
         if ($currentRoute && $method) {
             $c      = new $currentRoute['class']();

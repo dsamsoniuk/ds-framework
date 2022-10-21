@@ -44,6 +44,12 @@ class Route {
 
         return $url;
     }
+    public static function replaceUrlData(string $url, $data = []){
+        foreach ($data as $key => $param) {
+            $url = str_replace('{'.$key.'}', $param, $url);
+        }
+        return $url;
+    }
     /**
      * @param string $url
      * 

@@ -1,12 +1,14 @@
 
-Call to a member function createView() on null :: 2022-10-19 15:18:32
-syntax error, unexpected '}', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' :: 2022-10-19 15:18:57
-Return value of App\Request\Method::get() must be of the type string, integer returned :: 2022-10-19 18:55:22
-Return value of App\Request\Method::get() must be of the type string, integer returned :: 2022-10-19 18:55:26
-Return value of App\Request\Method::get() must be of the type string, integer returned :: 2022-10-19 18:55:33
-Return value of App\Request\Method::get() must be of the type string, integer returned :: 2022-10-19 18:55:38
-Cannot access private property App\Request\GetMethod::$method :: 2022-10-19 19:18:16
-Cannot access private property App\Request\GetMethod::$method :: 2022-10-19 19:18:17
-Cannot access private property App\Request\GetMethod::$method :: 2022-10-19 19:18:19
-Cannot access private property App\Request\GetMethod::$method :: 2022-10-19 19:18:34
-Cannot access private property App\Request\GetMethod::$method :: 2022-10-19 19:19:21
+Argument 1 passed to App\Repository::find() must be of the type integer, string given, called in /var/www/ds-framework/src/Controller/UserController.php on line 24 :: 2022-10-20 10:04:32
+Argument 1 passed to App\Repository::find() must be of the type integer, string given, called in /var/www/ds-framework/src/Controller/UserController.php on line 24 :: 2022-10-20 10:05:12
+Argument 1 passed to App\Repository::find() must be of the type integer, string given, called in /var/www/ds-framework/src/Controller/UserController.php on line 24 :: 2022-10-20 10:05:24
+Argument 1 passed to App\Repository::find() must be of the type integer, string given, called in /var/www/ds-framework/src/Controller/UserController.php on line 24 :: 2022-10-20 10:05:41
+Argument 1 passed to App\Repository::find() must be of the type integer, string given, called in /var/www/ds-framework/src/Controller/UserController.php on line 24 :: 2022-10-20 10:06:28
+Argument 1 passed to App\Repository::find() must be of the type integer, string given, called in /var/www/ds-framework/src/Controller/UserController.php on line 24 :: 2022-10-20 10:07:40
+Argument 1 passed to App\Repository::find() must be of the type integer, string given, called in /var/www/ds-framework/src/Controller/UserController.php on line 24 :: 2022-10-20 10:11:41
+Class 'ApiUserController' not found :: 2022-10-20 10:16:59
+Class 'Src\Api\ApiUserController' not found :: 2022-10-20 10:17:26
+Class 'Src\Api\ApiUserController' not found :: 2022-10-20 10:19:32
+Class 'Src\Api\ApiUserController' not found :: 2022-10-20 10:19:46
+Class 'AdminController' not found :: 2022-10-20 10:27:12
+Class 'Src\Controller\AdminController' not found :: 2022-10-20 10:27:30

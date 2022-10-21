@@ -34,6 +34,30 @@ class AuthController extends Controller {
 
         return $this->renderView('login.html.twig', []);
     }
+
+    public function register(){
+        
+        $req        = new Request();
+        $login      = $req->post->get('login');
+        $password   = $req->post->get('password');
+        
+        $auth       = new Authorization();
+        if ($auth->isLoged()) {
+            Route::redirectByName('main.index');
+        }
+
+        if ($login && $password) {
+            $result     = $auth->register($login, $password);
+            if (!$result) {
+                Session::addMessage('Incorrect login or password', 'danger');
+            } else {
+                Session::addMessage('Account created', 'success');
+                Route::redirectByName('main.login');
+            }
+        }
+
+        return $this->renderView('register.html.twig', []);
+    }
     public function logout(){
         $auth = new Authorization();
         $auth->logout();

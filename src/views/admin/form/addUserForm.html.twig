@@ -1,0 +1,61 @@
+
+
+{% for error in form['errors'] %}
+    <div class="alert alert-danger">
+        {{error}}
+    </div>
+{% endfor %}
+
+<div class="col-sm-6">
+    <div class="group-checkbox-one d-flex" data-form-id="edit_user_form">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" data-fields-hide="phone_nr,customer_name" {% if not isCompany %} checked{% endif %}>
+            <label class="form-check-label">
+              Klient
+            </label>
+          </div>
+          
+        <div class="form-check ml-2">
+            <input class="form-check-input" type="checkbox" value="" data-fields-hide="province" {% if isCompany %} checked{% endif %}>
+            <label class="form-check-label">
+              Firma
+            </label>
+          </div>
+    </div>
+
+    <form action="{{ getRouteByName(form['route_name']) }}" method="{{form['method']}}" id="edit_user_form">
+        {% for key,field in form['fields'] %}
+        <div class="row m-1 input-row ">
+            <div class="col-sm-6">
+                {% if field['data']['label'] is defined %}
+                    <label>{{field['data']['label']}}</label>
+                {% elseif field['type_name'] == 'hidden' %}
+                {% else %}
+                    <label>{{key}}</label>
+                {% endif %}
+            </div>
+
+            <div class="col-sm-6">
+                    {% if field['type_name'] == 'select' %}
+                        <select class="{% if field['data']['class'] is defined %}{{field['data']['class']}}{% endif %}"  
+                        name="{{field['name']}}" data-url="{{field['data']['url']}}"></select>
+                    {% else %}
+                        <input class="{% if field['data']['class'] is defined %}{{field['data']['class']}}{% endif %}" 
+                        type="{{field['type_name']}}" name="{{field['name']}}" value="{{field['data']['value']}}" 
+                        {% if field['data']['required'] is defined %}{{field['data']['required']}}{% endif %}
+                        minlength="2"
+                        >
+                    {% endif %}
+    
+                    {% if field['error'] is defined %}
+                        <div class="alert alert-danger">
+                            {{field['error']}}
+                        </div>
+                    {% endif %}
+                        
+                </div>
+            </div>
+        {% endfor %}
+    </form>
+</div>
+

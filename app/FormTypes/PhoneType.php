@@ -3,7 +3,7 @@
 namespace App\FormTypes;
 
 
-class NumberType implements TypeInterface {
+class PhoneType implements TypeInterface {
 
     private $type = 'number';
 

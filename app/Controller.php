@@ -17,6 +17,16 @@ abstract class Controller {
     public function renderView($templateName, $params = []) : string{
         return $this->renderTwigView($templateName, $params);
     }
+    /**
+     * @param array $data
+     * 
+     * @return void
+     */
+    public function responseJson($data = []) : void {
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode($data);
+        exit;
+    }
 
     /**
      * @param mixed $templateName

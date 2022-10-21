@@ -4,8 +4,9 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-           <h6>Index</h6>
-            <h2>{% if user %}Witaj! {{user['first_name']}}{% else %}not logged{% endif %}</h2>
+           <h3>Main page</h3>
+            <a class="nav-link" href="{{ getRouteByName('article.index') }}">Read articles</a>
+            <h2>Jesteś {% if user %} zalogowany {{user['first_name']}}{% else %} niezalogowany{% endif %}</h2>
         </div>
 
     </div>

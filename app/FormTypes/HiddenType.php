@@ -2,17 +2,16 @@
 
 namespace App\FormTypes;
 
+class HiddenType implements TypeInterface {
 
-class NumberType implements TypeInterface {
-
-    private $type = 'number';
+    private $type = 'hidden';
 
     public function valid($value)
     {
-        return is_int($value);
+        return true;
     }
-    public function parse($value) : int {
-        return intval($value);
+    public function parse($value) {
+        return $value;
     }
     public function getType() : string {
         return $this->type;

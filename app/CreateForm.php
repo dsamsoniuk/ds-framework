@@ -33,14 +33,14 @@ class CreateForm {
     }
 
     public function isValid(){
-        foreach ($this->fields as $field) {
+        foreach ($this->fields as &$field) {
             $type = $field['type'];
             if ( $type instanceof TypeInterface) {
                 $value = isset($field['data']['value']) ? $field['data']['value'] : '';
                 if ($type->valid($value)) {
                     continue;
                 } else {
-                    $errors[] = $type->getMessage();
+                    $field['error'] = $type->getMessage();
                     return false;
                 }
             } 
@@ -68,9 +68,17 @@ class CreateForm {
         }
 
         foreach ($data as $key => $value) {
-            if (isset($this->fields[$key])) {
-                $this->fields[$key]['data']['value'] = $value;
+            if (isset($this->fields[$key]) ) {
+                $this->fields[$key]['data']['value'] = $this->fields[$key]['type']->parse($value);
             }
         }
+    }
+
+    public function getData(){
+        $data = [];
+        foreach ($this->fields as $key => $field) {
+            $data[$key] = $field['data']['value'];
+        }
+        return $data;
     }
 }

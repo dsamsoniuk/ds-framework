@@ -1,0 +1,12 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+           {% include 'admin/form/addUserForm.html.twig' with {'form':form} %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

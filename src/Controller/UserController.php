@@ -5,8 +5,11 @@ namespace Src\Controller;
 use App\Controller;
 use App\Db;
 use App\Request\Request;
+use App\Route;
+use App\Session;
 use Src\Form\AddUserForm;
 use Src\Repository\CustomerRepository;
+use Src\Service\UserService;
 
 class UserController extends Controller {
 
@@ -18,13 +21,25 @@ class UserController extends Controller {
         $this->customerRepository = new CustomerRepository();
 
     }
+    public function view(){
+        $req            = new Request();
+        $customerId     =  $req->get->get('id');
+        $customer       = $this->customerRepository->find($customerId);
+
+        return $this->renderView('customer.html.twig', [
+            'customer' => $customer,
+        ]);
+    }
     public function add(){
+        UserService::requiredLogedIn();
+        $customer       = [];
 
         $req            = new Request();
-        $customerId     = $req->get->get('customer');
-
+        $customerId     = intval($req->get->get('customer'));
         $addUserForm    = new AddUserForm();
-        $form           = $addUserForm->create();
+        $form           = $addUserForm->create([
+            'id' => $customerId
+        ]);
 
         if ($req->server->get('REQUEST_METHOD') == 'POST') {
             $form->setDataForm($req->post->getAll());
@@ -34,14 +49,37 @@ class UserController extends Controller {
         }
 
         if ($req->server->get('REQUEST_METHOD') == 'POST' && $form->isValid()) {
-            // zapis do bazy
+
+            $data = $form->getData();
+            if (isset($data['id']) && $data['id'] != "") {
+                $this->customerRepository->update($data);
+                Session::addMessage('Data client updated', 'success');
+                Route::redirectByName('admin.client.list');
+            } else {
+                $this->customerRepository->add($data);
+                Session::addMessage('Client added', 'success');
+                Route::redirectByName('admin.client.list');
+            }
         }
         
-
         $view = $form->createView();
 
-        return $this->renderView('user.html.twig', [
+        return $this->renderView('admin/user.html.twig', [
             'form' => $view,
+            'isCompany' => isset($customer['nip']) && $customer['nip']
         ]);
+    }
+
+    public function delete(){
+        UserService::requiredLogedIn();
+
+        $req            = new Request();
+        $customerId     = intval($req->get->get('id'));
+
+        $this->customerRepository->delete($customerId);
+
+        Session::addMessage('Client deleted', 'success');
+        Route::redirectByName('admin.client.list');
+
     }
 }

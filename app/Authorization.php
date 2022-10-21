@@ -4,8 +4,10 @@ declare(strict_types = 1);
 namespace App;
 
 use FaaPz\PDO\Clause\Conditional;
+use Src\Repository\UserRepository;
 
 class Authorization {
+
 
     /**
      * @param string $userLogin
@@ -35,7 +37,6 @@ class Authorization {
         }
         return true;
     }
-
     /**
      * @param string $userLogin
      * 
@@ -56,10 +57,16 @@ class Authorization {
     public function register(string $userLogin, string $userPassword){
 
         // TODO : register function
+        $login      = Parse::string($userLogin);
+        $password   = $this->hashPassword(Parse::string($userPassword));
 
-        // $login      = Parse::string($userLogin);
-        // $password   = $this->hashPassword(Parse::string($userPassword));
-
+        $userRepo = new UserRepository();
+        $userRepo->add([
+            'username' => $login,
+            'password' => $password,
+            'status' => 1,
+        ]);
+        return true;
     }
 
     /**

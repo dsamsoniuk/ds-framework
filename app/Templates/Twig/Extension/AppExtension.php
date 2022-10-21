@@ -21,9 +21,11 @@ class AppExtension extends AbstractExtension
      * 
      * @return string
      */
-    public function getRouteByName(string $name = ''): string
+    public function getRouteByName(string $name = '', $params = []): string
     {
         $url = Route::getByName($name);
+        $url = Route::replaceUrlData($url, $params);
+
         return $url;
     }
 }
