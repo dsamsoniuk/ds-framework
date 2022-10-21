@@ -20,9 +20,10 @@ class Db {
         $dbLogin    = Configuration::get('db_login');
         $dbPass     = Configuration::get('db_pass');
 
-        $dsn        = strtr('mysql:host=_HOST_;dbname=_NAME_;charset=utf8', [
+        $dsn        = strtr('mysql:host=_HOST_;port=_PORT_;dbname=_NAME_;charset=utf8', [
             '_HOST_' => Configuration::get('db_host'),
             '_NAME_' => Configuration::get('db_name'),
+            '_PORT_' => Configuration::get('db_port'),
         ]);
 
         if (!isset(self::$db)) {

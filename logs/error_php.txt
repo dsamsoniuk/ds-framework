@@ -1,19 +1,2 @@
-
-Argument 1 passed to App\Repository::find() must be of the type integer, string given, called in /var/www/ds-framework/src/Controller/UserController.php on line 24 :: 2022-10-20 10:04:32
-Argument 1 passed to App\Repository::find() must be of the type integer, string given, called in /var/www/ds-framework/src/Controller/UserController.php on line 24 :: 2022-10-20 10:05:12
-Argument 1 passed to App\Repository::find() must be of the type integer, string given, called in /var/www/ds-framework/src/Controller/UserController.php on line 24 :: 2022-10-20 10:05:24
-Argument 1 passed to App\Repository::find() must be of the type integer, string given, called in /var/www/ds-framework/src/Controller/UserController.php on line 24 :: 2022-10-20 10:05:41
-Argument 1 passed to App\Repository::find() must be of the type integer, string given, called in /var/www/ds-framework/src/Controller/UserController.php on line 24 :: 2022-10-20 10:06:28
-Argument 1 passed to App\Repository::find() must be of the type integer, string given, called in /var/www/ds-framework/src/Controller/UserController.php on line 24 :: 2022-10-20 10:07:40
-Argument 1 passed to App\Repository::find() must be of the type integer, string given, called in /var/www/ds-framework/src/Controller/UserController.php on line 24 :: 2022-10-20 10:11:41
-Class 'ApiUserController' not found :: 2022-10-20 10:16:59
-Class 'Src\Api\ApiUserController' not found :: 2022-10-20 10:17:26
-Class 'Src\Api\ApiUserController' not found :: 2022-10-20 10:19:32
-Class 'Src\Api\ApiUserController' not found :: 2022-10-20 10:19:46
-Class 'AdminController' not found :: 2022-10-20 10:27:12
-Class 'Src\Controller\AdminController' not found :: 2022-10-20 10:27:30
-Return value of App\FormTypes\PhoneType::parse() must be of the type integer, string returned :: 2022-10-21 09:35:54
-Return value of App\FormTypes\PhoneType::parse() must be of the type integer, string returned :: 2022-10-21 09:36:00
-Return value of App\FormTypes\PhoneType::parse() must be of the type integer, string returned :: 2022-10-21 09:36:13
 syntax error, unexpected '}' :: 2022-10-21 11:20:30
 syntax error, unexpected '}' :: 2022-10-21 11:20:33

@@ -10,14 +10,9 @@ use App\FormTypes\HiddenType;
 use App\FormTypes\NumberType;
 use App\FormTypes\PhoneType;
 use App\FormTypes\SelectType;
-use App\FormTypes\SubmitType;
 use App\FormTypes\TextType;
-use App\Route;
 
 class AddUserForm implements FormInterface {
-
-    // private $name = 'add_user';
-    // private $actionName = '';
 
     public function create($data = []) : CreateForm {
 
@@ -107,12 +102,6 @@ class AddUserForm implements FormInterface {
                 ]);
             }
 
-        // $form
-        // ->add('submit', new SubmitType(), [
-        //     'label' => '',
-        //     'class' => 'btn btn-success mt-2',
-        //     'value' => empty($data['customer']) ? 'Add new client' : 'Edit client' 
-        // ]);
         return $form;
     }
 
