@@ -18,7 +18,7 @@ services:
             - php
             - mysqldb
     php:
-        image: nanoninja/php-fpm:8.1
+        image: nanoninja/php-fpm:7.4.0
         restart: always
         volumes:
             - "./etc/php/php.ini:/usr/local/etc/php/conf.d/php.ini"
@@ -28,6 +28,7 @@ services:
         restart: always
         # env_file:
         #     - ".env"
+        # mysql -h localhost -P 8989 --protocol=tcp -u nazwapl -p
         environment:
             - MYSQL_DATABASE=nazwapl
             - MYSQL_ROOT_PASSWORD=nazwapl
@@ -36,4 +37,4 @@ services:
         ports:
             - "8989:3306"
         volumes:
-            - "./data/db/mysql:/var/lib/mysql"
+            - "./database:/docker-entrypoint-initdb.d"

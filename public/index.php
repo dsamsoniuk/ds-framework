@@ -1,6 +1,5 @@
 <?php
 
-
 use App\Core;
 use App\Exceptions\RouteNotFoundException;
 use App\Log;
@@ -26,6 +25,7 @@ require_once('../vendor/autoload.php');
 // }
 
 try {
+    ob_start();
     Session::start();
     $request        = new Request();
     $route          = Route::getInstance();

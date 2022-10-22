@@ -1,13 +1,24 @@
 # Uruchamianie
 
+### Docker
 
-### Instalacja
+composer i
+docker-compose up
+
+strona : localhost:8000
+konto: 
+    login: admin
+    haslo: admin
+
+
+### Instalacja reczna
 
 1. Instalacja paczek: composer install
 
-1. Do stworzenia baza danych
+1. Do stworzenia baza danych o nazwie nazwapl
 
 1. Konfiguracja bazy : config.ini
 
-1. Import bazy danych przygotowałem proste danych plik: nazwapl_db.sql
+1. Import bazy danych przygotowałem proste danych plik: database/nazwapl_db.sql
+
 
