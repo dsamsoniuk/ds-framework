@@ -2,10 +2,12 @@
 
 ### Docker
 
-composer i
+composer install
+
 docker-compose up
 
 strona : localhost:8000
+
 konto: 
     login: admin
     haslo: admin
