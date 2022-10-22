@@ -21,6 +21,6 @@ konto:
 
 1. Konfiguracja bazy : config.ini
 
-1. Import bazy danych przygotowałem proste danych plik: database/nazwapl_db.sql
+1. Import bazy danych przygotowałem w pliku: database/nazwapl_db.sql
 
 
